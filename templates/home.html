@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 
 <html>
-<head></head>
+<head>
+    
+    <style>
+    .info{
+        overflow : hidden;
+        border : 1px solid black;
+        margin : 10px;
+        text-decoration: none;
+        padding-left : 10px;
+        padding-right : 10px;
+
+    }
+
+    </style>
+</head>
 <body>
-{% for item in content %}
-    <div class = "searchContainer"> <p> {{item}} </p></div>
+{% for info in content %}
+    <div class = "info">
+        <p>
+            {{ info }}
+        </p>
+    </div>
 {% endfor %}
+
+<form   method = "post()">
+<input type = "text" name = "answer">
+<input type = "hidden" value = "{{ correct }}" name = "correct">
+<button action = "submit" onsubmit="window.loaction.reload();"value="Go">Click me to submit</button>
+</form>
 </body>
 
 

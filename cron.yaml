@@ -1,0 +1,4 @@
+cron:
+- description: mobilepull
+  url: /mobilepull
+  schedule: every 3 minutes

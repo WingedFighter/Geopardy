@@ -11,7 +11,8 @@ handlers:
   static_dir: static_files
 - url: /.*
   script: geopardy.app
-
+- url: /mobilepull
+  script: geopardy.app
 
 
 libraries:

@@ -6,27 +6,18 @@ class Results(webapp2.RequestHandler):
 	guess = " ";
 
 	def post(self):
-		guess=self.request.get('guess')
-
-		myFile = open('actualSearch', 'r')
-
-		actualSearch = myFile.readLine()
+		guess=self.request.get('answer')
+		actualSearch = self.request.get('correct')
 
 	def get(self):
 		output = """
 		<html>
-			<head>
-			</head>
-
 			<body>
 
 		"""
-		output += "Your guess was " + guess + "\n"
+		output += "Your guess was %s\n" % guess
 
-		tempGuess = threshold(guess)
-		tempActual = threshold(actualSearch)
-
-		result = tempGuess == tempActual
+		result = (guess.lower() == actualSearch.lower())
 
 		if result:
 			output ++ "You are correct! Congratulations!\n"
@@ -35,9 +26,8 @@ class Results(webapp2.RequestHandler):
 
 		output += pullScore(self, result)
 
-		output += "The actual search was " + actualSearch
+		output += "The actual search was %s" % actualSearch
 
-		output += 
 		bottom = """
 		</body>
 		</html>
@@ -71,4 +61,4 @@ class Results(webapp2.RequestHandler):
 		if result:
 			score += 1
 
-		return "Your score is now " + str(score)
+		return "Your score is now %s" % str(score)
