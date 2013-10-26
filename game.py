@@ -1,8 +1,7 @@
 import webapp2
 import re
 
-myFile = open('searchDescriptions.txt','r')
-re.split(';',myFile)
+
 class Game(webapp2.RequestHandler):
 	def get(self):
 		top = '''
