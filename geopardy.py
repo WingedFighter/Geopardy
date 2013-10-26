@@ -130,11 +130,24 @@ class HomeHandler(webapp2.RequestHandler):
             logging.info("We won")
 
 
+class ResultHandler(webapp2.RequestHandler):   
+    def get(self):
+        self.response.write("hello")
+    def post(self):
+        answer = self.request.get("answer")
+        correct = self.request.get("correct")
+        logging.info(len(keys))
+        template_values = {"correct" : correct,
+                            "answer" : answer,
+                            }
 
+        template = jinja_environment.get_template('templates/results.html')
+        self.response.out.write(template.render(template_values))
 
 routes = [
     
-    ('/.*', HomeHandler),
+    ('/', HomeHandler),
+    ('/result', ResultHandler),
     
 ]
 app = webapp2.WSGIApplication(routes, debug=True)
