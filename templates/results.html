@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 <head>
     
@@ -17,6 +16,7 @@
     </style>
 </head>
 <body>
+<h2 id="correct"></h2>
 Correct : {{ correct }}
 Answer : {{ answer }}
 
@@ -25,5 +25,13 @@ Answer : {{ answer }}
 </form>
 </body>
 
-
+<script>
+  window.addEventListener('load', function(){
+    if ("{{correct}}".toLowerCase().indexOf("{{answer}}".toLowerCase()) > -1) {
+      document.getElementById("correct").innerHTML = "CORRECT";
+    } else {
+      document.getElementById("correct").innerHTML = "INCORRECT";
+    }
+  }, false )
+</script>
 </html>
